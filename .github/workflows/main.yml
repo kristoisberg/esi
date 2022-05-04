@@ -40,7 +40,6 @@ jobs:
       uses: akhileshns/heroku-deploy@v3.12.12
       with:
         appdir: "bpb-api/build/libs"
-        procfile: "web: java -jar bpb-api-1.0.0.jar"
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: "bpb-api"
         heroku_email: "kristo.isberg@gmail.com"
