@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version "${springBootVersion}" apply false
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+allprojects {
+    group projectGroup
+    version projectVersion
+
+    sourceCompatibility = 11
+    targetCompatibility = 11
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+}
+
+subprojects {
+    apply plugin: 'io.spring.dependency-management'
+
+    dependencyManagement {
+        dependencies {
+            dependency group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+            dependency group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: springBootVersion
+            dependency group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: springBootVersion
+
+            dependency group: 'org.postgresql', name: 'postgresql', version: '42.3.4'
+
+            dependency group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+
+            dependency group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.8.2'
+            dependency group: 'org.mockito', name: 'mockito-core', version: '4.5.1'
+            dependency group: 'org.mockito', name: 'mockito-junit-jupiter', version: '4.5.1'
+            dependency group: 'org.assertj', name: 'assertj-core', version: '3.22.0'
+        }
+    }
+}
